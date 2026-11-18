@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIM-JQH V5.4 — Assalam Kwagean, Pare Kediri</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-main: #FAFAFA;
+      --bg-surface: #FFFFFF;
+      --bg-subtle: #F3F4F6;
+      --text-primary: #111827;
+      --text-secondary: #4B5563;
+      --brand-primary: #0F5132;
+      --brand-accent: #198754;
+      --brand-gold: #B58A3D;
+      --border-color: #E5E7EB;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-main);
+      color: var(--text-primary);
+      overflow-x: hidden;
+    }
+
+    .font-serif-display {
+      font-family: 'Playfair Display', serif;
+    }
+
+    /* Smooth Scroll Reveal Animations */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* SaaS Subtle Grid Pattern */
+    .bg-grid-pattern {
+      background-size: 36px 36px;
+      background-image: 
+        linear-gradient(to right, rgba(15, 81, 50, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 81, 50, 0.04) 1px, transparent 1px);
+    }
+
+    /* Glass Navbar */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+    /* Presentation / Rapat Fullscreen Mode */
+    .rapat-mode {
+      background: #0B1912 !important;
+      color: #F8FAFC !important;
+    }
+    .rapat-mode .rapat-card {
+      background: #132A1F !important;
+      border-color: rgba(215, 182, 107, 0.25) !important;
+      color: #F8FAFC !important;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-emerald-800 selection:text-white">
+
+  <!-- ===================================================================== -->
+  <!-- VIEW 1: HALAMAN PUBLIK (LANDING PAGE MODERN SAAS - TANPA DATA INTERNAL) -->
+  <!-- ===================================================================== -->
+  <div id="publicLandingView">
+    
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-gray-200/80 transition-all">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <div class="flex items-center gap-3.5">
+          <div class="w-11 h-11 rounded-full bg-white p-0.5 shadow-sm border border-emerald-200 flex items-center justify-center overflow-hidden">
+            <img src="images.jpeg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Logo_JQH_NU.png/240px-Logo_JQH_NU.png'" alt="Logo JQH" class="w-full h-full object-contain rounded-full">
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="font-extrabold text-lg tracking-tight text-gray-900">SIM-JQH</span>
+              <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">V5.4</span>
+            </div>
+            <p class="text-xs text-gray-500 font-medium">Assalam Kwagean • Pare, Kediri</p>
+          </div>
+        </div>
+
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-600">
+          <a href="#profil" class="hover:text-emerald-800 transition-colors">Profil Sistem</a>
+          <a href="#fitur" class="hover:text-emerald-800 transition-colors">Modul Utama</a>
+          <a href="#otoritas" class="hover:text-emerald-800 transition-colors">Hak Akses</a>
+        </nav>
+
+        <div class="flex items-center gap-3">
+          <button onclick="openLoginModal()" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-bold text-white bg-[#0F5132] hover:bg-[#0B3D26] shadow-sm hover:shadow-md transition-all active:scale-95">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+            Masuk Sistem
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section (Clause-inspired Editorial SaaS Layout) -->
+    <section id="profil" class="relative pt-16 pb-24 lg:pt-24 lg:pb-32 bg-grid-pattern overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="max-w-3xl mx-auto text-center reveal">
+          <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white border border-gray-200 shadow-xs mb-8">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-gray-700">Jam'iyyatul Qurro' wal Huffazh • Assalam Kwagean</span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-[1.12] mb-6">
+            Standarisasi Pembinaan Al-Qur'an dalam Satu <span class="text-[#0F5132] underline decoration-[#B58A3D]/50 decoration-4 underline-offset-8">Ekosistem Terpadu.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-gray-600 leading-relaxed mb-10 max-w-2xl mx-auto">
+            Platform resmi pencatatan hafalan <em>Bilghoib</em>, sorogan <em>Binnadzhor</em>, presensi 3 sesi harian, manajemen pengampu & badal, hingga analitik evaluasi rapat pengurus secara akurat dan transparan.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button onclick="openLoginModal()" class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-bold text-white bg-[#0F5132] hover:bg-[#0A3B24] shadow-lg shadow-emerald-950/15 transition-all hover:-translate-y-0.5">
+              Masuk Ruang Kerja & Rapat
+            </button>
+            <a href="#fitur" class="w-full sm:w-auto px-8 py-4 rounded-full text-sm font-bold text-gray-700 bg-white border border-gray-200 hover:bg-gray-50 transition-all">
+              Pelajari Arsitektur Sistem
+            </a>
+          </div>
+        </div>
+
+        <!-- Abstract Preview Card (Tanpa Data Sensitif Santri) -->
+        <div class="mt-16 max-w-5xl mx-auto reveal reveal-delay-2">
+          <div class="rounded-3xl bg-white p-3 sm:p-5 border border-gray-200/90 shadow-2xl shadow-gray-900/5">
+            <div class="rounded-2xl bg-[#0F2419] text-white p-6 sm:p-10 relative overflow-hidden">
+              <div class="absolute -right-16 -top-16 w-64 h-64 rounded-full bg-emerald-500/10 blur-2xl"></div>
+              <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-white/10">
+                <div class="flex items-center gap-4">
+                  <div class="w-14 h-14 rounded-2xl bg-white p-1.5 flex items-center justify-center">
+                    <img src="images.jpeg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Logo_JQH_NU.png/240px-Logo_JQH_NU.png'" alt="Logo JQH" class="w-full h-full object-contain">
+                  </div>
+                  <div>
+                    <span class="text-xs font-bold uppercase tracking-widest text-amber-300">Portal Internal Terproteksi</span>
+                    <h2 class="text-xl sm:text-2xl font-bold mt-0.5">SIM-JQH V5.4 — Pare, Kediri</h2>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-xs font-semibold">
+                  <svg class="w-4 h-4 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                  Data Santri & Pengampu Terkunci (Wajib Login)
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 pt-8">
+                <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <p class="text-xs font-semibold text-emerald-300 uppercase tracking-wider">Jalur Akademik</p>
+                  <p class="text-lg font-bold mt-1">Salaf (10 Bln) & Formal</p>
+                  <p class="text-xs text-gray-300 mt-1.5">Kalender Hijriyah Syawal–Rajab & konfigurasi semester dinamis.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <p class="text-xs font-semibold text-amber-300 uppercase tracking-wider">Evaluasi & Apresiasi</p>
+                  <p class="text-lg font-bold mt-1">11 Indikator Tie-Ranking</p>
+                  <p class="text-xs text-gray-300 mt-1.5">Podium pencapaian santri siap tampil layar penuh saat rapat.</p>
+                </div>
+                <div class="p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <p class="text-xs font-semibold text-emerald-300 uppercase tracking-wider">Operasional Sesi</p>
+                  <p class="text-lg font-bold mt-1">3 Sesi & Badal Otomatis</p>
+                  <p class="text-xs text-gray-300 mt-1.5">Maghrib, Isya', & Muroqobah Pagi dengan pencatatan badal.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Modules Section -->
+    <section id="fitur" class="py-24 bg-white border-t border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl reveal">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#0F5132]">Kapabilitas Sistem V5.4</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mt-2 tracking-tight">Dirancang Khusus untuk Ketertiban Administrasi & Rapat Evaluasi.</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+          <div class="p-7 rounded-2xl border border-gray-200/80 bg-[#FAFAFA] hover:bg-white hover:shadow-xl hover:shadow-gray-900/5 transition-all reveal">
+            <div class="w-11 h-11 rounded-xl bg-emerald-100 text-[#0F5132] flex items-center justify-center font-bold text-lg mb-5">01</div>
+            <h3 class="text-lg font-bold text-gray-900">Hafalan Bilghoib & Binnadzhor</h3>
+            <p class="text-sm text-gray-600 mt-2 leading-relaxed">Pemisahan log setoran harian dan rekap bulanan resmi. Konversi halaman ke Juz otomatis beserta pencatatan target dan setoran subuh.</p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-gray-200/80 bg-[#FAFAFA] hover:bg-white hover:shadow-xl hover:shadow-gray-900/5 transition-all reveal reveal-delay-1">
+            <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-lg mb-5">02</div>
+            <h3 class="text-lg font-bold text-gray-900">Presensi 3 Sesi & Pengampu Badal</h3>
+            <p class="text-sm text-gray-600 mt-2 leading-relaxed">Kalender efektif terpisah untuk <strong>Maghrib, Isya', dan Muroqobah Pagi</strong>. Penunjukan pengampu badal otomatis tercatat saat pengampu utama berhalangan.</p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-gray-200/80 bg-[#FAFAFA] hover:bg-white hover:shadow-xl hover:shadow-gray-900/5 transition-all reveal reveal-delay-2">
+            <div class="w-11 h-11 rounded-xl bg-emerald-100 text-[#0F5132] flex items-center justify-center font-bold text-lg mb-5">03</div>
+            <h3 class="text-lg font-bold text-gray-900">Profil Individu & 7 Tab Santri</h3>
+            <p class="text-sm text-gray-600 mt-2 leading-relaxed">Dashboard capaian individu per santri (grafik Ziyadah, keaktifan, status Tasmi' 30 Juz) dilengkapi 7 tab administrasi lengkap.</p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-gray-200/80 bg-[#FAFAFA] hover:bg-white hover:shadow-xl hover:shadow-gray-900/5 transition-all reveal">
+            <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-lg mb-5">04</div>
+            <h3 class="text-lg font-bold text-gray-900">Smart Analytics & Notifikasi</h3>
+            <p class="text-sm text-gray-600 mt-2 leading-relaxed">Deteksi otomatis penurunan keaktifan ≥ 10%, halaqoh di bawah target &lt; 70%, batas Alpha santri, hingga pengingat rekap bulanan yang belum lengkap.</p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-gray-200/80 bg-[#FAFAFA] hover:bg-white hover:shadow-xl hover:shadow-gray-900/5 transition-all reveal reveal-delay-1">
+            <div class="w-11 h-11 rounded-xl bg-emerald-100 text-[#0F5132] flex items-center justify-center font-bold text-lg mb-5">05</div>
+            <h3 class="text-lg font-bold text-gray-900">Mode Rapat Evaluasi & Apresiasi</h3>
+            <p class="text-sm text-gray-600 mt-2 leading-relaxed">Tampilan proyektor layar penuh yang menyoroti podium santri terbaik berdasarkan 11 indikator Tie-Ranking dan laporan resmi siap cetak.</p>
+          </div>
+
+          <div class="p-7 rounded-2xl border border-gray-200/80 bg-[#FAFAFA] hover:bg-white hover:shadow-xl hover:shadow-gray-900/5 transition-all reveal reveal-delay-2">
+            <div class="w-11 h-11 rounded-xl bg-amber-100 text-amber-900 flex items-center justify-center font-bold text-lg mb-5">06</div>
+            <h3 class="text-lg font-bold text-gray-900">Audit Trail, Snapshot & Integritas</h3>
+            <p class="text-sm text-gray-600 mt-2 leading-relaxed">Validasi duplikasi Nomor Induk otomatis, rekaman riwayat perubahan pengguna, serta titik pemulihan (Snapshot) saat finalisasi periode.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Role Structure Section -->
+    <section id="otoritas" class="py-24 bg-[#FAFAFA] border-t border-gray-200/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-2xl mx-auto reveal">
+          <span class="text-xs font-bold uppercase tracking-widest text-[#0F5132]">Tata Kelola & Keamanan</span>
+          <h2 class="text-3xl font-extrabold text-gray-900 mt-2">4 Tingkat Otoritas Pengguna</h2>
+          <p class="text-sm text-gray-600 mt-3">Setiap pengurus mendapatkan ruang akses yang presisi sesuai tanggung jawab strukturalnya.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mt-12">
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs reveal">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900">Admin Premium</span>
+            <p class="text-xs text-gray-600 mt-4 leading-relaxed">Otoritas tertinggi: Pengaturan sistem penuh, finalisasi periode permanen, pemulihan Audit Trail & Snapshot, serta pengesahan Bisyaroh.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs reveal reveal-delay-1">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900">Admin</span>
+            <p class="text-xs text-gray-600 mt-4 leading-relaxed">Operasional penuh: Buka/kunci periode Hijriyah (auto-snapshot), kelola akun operasional, pantau Audit Trail, dan pengesahan Bisyaroh.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs reveal reveal-delay-2">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-900">Editor</span>
+            <p class="text-xs text-gray-600 mt-4 leading-relaxed">Pengelola harian: Input & ubah data santri (7 tab), mutasi halaqoh, presensi 3 sesi, penunjukan badal, rekap hafalan, dan cetak laporan.</p>
+          </div>
+          <div class="p-6 rounded-2xl bg-white border border-gray-200 shadow-xs reveal reveal-delay-3">
+            <span class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-gray-100 text-gray-800">Viewer</span>
+            <p class="text-xs text-gray-600 mt-4 leading-relaxed">Pemantauan rapat (<em>Read-Only</em>): Melihat Dashboard pencapaian, Smart Analytics, 11 Ranking, Profil Santri, dan unduh dokumen resmi.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <img src="images.jpeg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Logo_JQH_NU.png/240px-Logo_JQH_NU.png'" alt="Logo JQH" class="w-8 h-8 rounded-full object-contain border border-gray-200">
+          <span class="text-sm font-bold text-gray-900">SIM-JQH V5.4 — Assalam Kwagean, Pare, Kediri</span>
+        </div>
+        <p class="text-xs text-gray-500">Sistem Informasi Manajemen Jam'iyyatul Qurro' wal Huffazh</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL LOGIN SESUAI PERAN (4 TINGKAT OTORITAS)                         -->
+  <!-- ===================================================================== -->
+  <div id="loginModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-gray-950/60 backdrop-blur-xs p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-7 sm:p-8 shadow-2xl border border-gray-100 relative animate-[fadeIn_0.25s_ease-out]">
+      <button onclick="closeLoginModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600">✕</button>
+      
+      <div class="flex items-center gap-3 mb-6">
+        <img src="images.jpeg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Logo_JQH_NU.png/240px-Logo_JQH_NU.png'" alt="Logo JQH" class="w-12 h-12 rounded-full border border-emerald-200 object-contain p-0.5">
+        <div>
+          <h3 class="text-xl font-extrabold text-gray-900">Autentikasi Pengurus</h3>
+          <p class="text-xs text-gray-500">SIM-JQH V5.4 • Assalam Kwagean</p>
+        </div>
+      </div>
+
+      <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Pilih Peran Otoritas</label>
+          <select id="loginRoleSelect" class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm font-semibold focus:outline-none focus:border-[#0F5132]">
+            <option value="Admin Premium">Admin Premium (Akses Penuh + Bisyaroh + Restore)</option>
+            <option value="Admin">Admin (Operasional Penuh + Bisyaroh + Snapshot)</option>
+            <option value="Editor">Editor (Input Santri/Presensi/Hafalan — Tanpa Bisyaroh)</option>
+            <option value="Viewer">Viewer (Mode Rapat & Pantau — Tanpa Bisyaroh)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Nama Pengguna / ID Pengurus</label>
+          <input type="text" id="loginUsername" value="Koordinator Kurikulum" required class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-[#0F5132]">
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1.5">Kata Sandi</label>
+          <input type="password" id="loginPassword" value="••••••••" required class="w-full px-4 py-3 rounded-xl border border-gray-300 text-sm focus:outline-none focus:border-[#0F5132]">
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-xl bg-[#0F5132] hover:bg-[#0A3B24] text-white font-bold text-sm shadow-md transition-all">
+          Buka Workspace SIM-JQH
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- VIEW 2: WORKSPACE INTERNAL PENUH (HANYA MUNCUL SETELAH LOGIN)         -->
+  <!-- ===================================================================== -->
+  <div id="appWorkspaceView" class="hidden min-h-screen flex-col pb-20 lg:pb-0">
+    
+    <!-- Top Bar Workspace -->
+    <header class="sticky top-0 z-30 bg-white border-b border-gray-200 px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="images.jpeg" onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Logo_JQH_NU.png/240px-Logo_JQH_NU.png'" alt="Logo JQH" class="w-9 h-9 rounded-full object-contain border border-emerald-200">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-sm sm:text-base tracking-tight">SIM-JQH V5.4</span>
+            <span id="activeRoleBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-full bg-amber-100 text-amber-900">Admin Premium</span>
+          </div>
+          <p class="text-[11px] text-gray-500 hidden sm:block">Assalam Kwagean — Pare, Kediri</p>
+        </div>
+      </div>
+
+      <!-- Jalur Pendidikan & Periode Selector -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <select id="jalurSelector" onchange="updateAcademicPeriod()" class="px-3 py-1.5 rounded-lg border border-gray-300 text-xs font-bold bg-gray-50 text-gray-800">
+          <option value="salaf">Jalur Salaf (10 Bln: Syawal–Rajab)</option>
+          <option value="formal">Jalur Formal (Semester Dinamis)</option>
+        </select>
+        <select id="periodeSelector" onchange="refreshWorkspaceData()" class="hidden md:block px-3 py-1.5 rounded-lg border border-gray-300 text-xs font-semibold bg-white text-gray-700">
+          <option value="tahunan">Tahunan (Syawal – Rajab)</option>
+          <option value="smt1">Semester 1 (Syawal – Safar)</option>
+          <option value="smt2">Semester 2 (Rabiul Awal – Rajab)</option>
+        </select>
+
+        <!-- Tombol Mode Rapat Apresiasi -->
+        <button onclick="toggleRapatMode()" id="btnRapatMode" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#B58A3D] hover:bg-[#9A732E] text-white shadow-xs transition-all">
+          <span>🏆</span> <span class="hidden sm:inline">Mode Rapat</span>
+        </button>
+
+        <!-- Pusat Notifikasi -->
+        <button onclick="toggleNotifPanel()" class="relative p-2 rounded-lg border border-gray-200 hover:bg-gray-50 text-gray-700" title="Pusat Notifikasi">
+          🔔
+          <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-red-600 text-white text-[10px] font-bold flex items-center justify-center">3</span>
+        </button>
+
+        <button onclick="logoutSystem()" class="px-3 py-1.5 rounded-lg border border-red-200 text-red-700 hover:bg-red-50 text-xs font-bold">
+          Keluar
+        </button>
+      </div>
+    </header>
+
+    <!-- Notification Dropdown -->
+    <div id="notifPanel" class="hidden fixed top-16 right-4 z-40 w-80 sm:w-96 bg-white rounded-2xl shadow-2xl border border-gray-200 p-4">
+      <div class="flex items-center justify-between pb-2.5 border-b border-gray-100">
+        <span class="text-xs font-extrabold uppercase tracking-wider text-gray-800">Pusat Notifikasi Real-Time</span>
+        <button onclick="toggleNotifPanel()" class="text-xs text-gray-400 hover:text-gray-700">Tutup</button>
+      </div>
+      <div class="divide-y divide-gray-100 text-xs mt-1">
+        <div class="py-2.5">
+          <span class="font-bold text-amber-700">⚠ Presensi Bulanan:</span> Halaqoh Al-Fatih sesi Muroqobah Pagi belum lengkap 2 hari.
+        </div>
+        <div class="py-2.5">
+          <span class="font-bold text-red-700">🚨 Batas Alpha Santri:</span> 1 santri mendekati batas Alpha bulanan (perlu pembinaan).
+        </div>
+        <div class="py-2.5">
+          <span class="font-bold text-emerald-700">✓ Status Periode:</span> Bulan Rajab 1447 H aktif dan siap untuk evaluasi rapat.
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-1">
+      <!-- Desktop Sidebar Navigation -->
+      <aside class="hidden lg:flex w-64 flex-col bg-white border-r border-gray-200 p-4 justify-between">
+        <nav class="space-y-1">
+          <button onclick="switchTab('dashboard')" data-tab="dashboard" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-bold bg-emerald-50 text-[#0F5132]">
+            <span>📊</span> Dashboard & Rapat
+          </button>
+          <button onclick="switchTab('santri')" data-tab="santri" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50">
+            <span>🎓</span> Data Santri (7 Tab)
+          </button>
+          <button onclick="switchTab('presensi')" data-tab="presensi" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50">
+            <span>🗓️</span> Presensi 3 Sesi
+          </button>
+          <button onclick="switchTab('hafalan')" data-tab="hafalan" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50">
+            <span>📖</span> Bilghoib & Binnadzhor
+          </button>
+          <button onclick="switchTab('pengampu')" data-tab="pengampu" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50">
+            <span>👨‍🏫</span> Pengampu & Badal
+          </button>
+          <button onclick="switchTab('analytics')" data-tab="analytics" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50">
+            <span>🧠</span> Smart Analytics
+          </button>
+          <button onclick="switchTab('integritas')" data-tab="integritas" id="navIntegritas" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-sm font-semibold text-gray-600 hover:bg-gray-50">
+            <span>🛡️</span> Audit Trail & Integritas
+          </button>
+        </nav>
+
+        <div class="p-3.5 rounded-xl bg-gray-50 border border-gray-200/80 text-xs">
+          <p class="font-bold text-gray-800" id="sidebarUserName">Koordinator Kurikulum</p>
+          <p class="text-gray-500 mt-0.5" id="sidebarRoleDesc">Hak akses penuh sistem</p>
+        </div>
+      </aside>
+
+      <!-- Main Workspace Content -->
+      <main class="flex-1 p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto w-full space-y-6">
+        
+        <!-- =============================================================== -->
+        <!-- TAB 1: DASHBOARD PENCAPAIAN & MODE RAPAT APRESIASI              -->
+        <!-- =============================================================== -->
+        <section id="tab-dashboard" class="workspace-tab space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-700" id="periodBannerText">Periode Aktif: Jalur Salaf — Tahunan (Syawal – Rajab)</span>
+              <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight mt-0.5">Ringkasan Pencapaian & Evaluasi Pembinaan</h1>
+            </div>
+            <button onclick="window.print()" class="self-start px-4 py-2 rounded-xl border border-gray-300 bg-white text-gray-800 text-xs font-bold hover:bg-gray-50">
+              🖨️ Cetak Laporan PDF Resmi
+            </button>
+          </div>
+
+          <!-- KPI Cards -->
+          <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="rapat-card p-5 rounded-2xl bg-white border border-gray-200 shadow-xs">
+              <p class="text-xs font-semibold text-gray-500">Total Santri Aktif</p>
+              <p class="text-2xl sm:text-3xl font-extrabold mt-1">148 <span class="text-xs font-bold text-emerald-600">Santri</span></p>
+              <p class="text-[11px] text-gray-400 mt-1">6 Halaqoh Bilghoib & Binnadzhor</p>
+            </div>
+            <div class="rapat-card p-5 rounded-2xl bg-white border border-gray-200 shadow-xs">
+              <p class="text-xs font-semibold text-gray-500">Rata-rata Keaktifan 3 Sesi</p>
+              <p class="text-2xl sm:text-3xl font-extrabold mt-1 text-emerald-600">94.2%</p>
+              <p class="text-[11px] text-gray-400 mt-1">Maghrib, Isya', & Muroqobah Pagi</p>
+            </div>
+            <div class="rapat-card p-5 rounded-2xl bg-white border border-gray-200 shadow-xs">
+              <p class="text-xs font-semibold text-gray-500">Capaian Target Ziyadah</p>
+              <p class="text-2xl sm:text-3xl font-extrabold mt-1 text-[#B58A3D]">88.5%</p>
+              <p class="text-[11px] text-gray-400 mt-1">+4.1% dibanding periode lalu</p>
+            </div>
+            <div class="rapat-card p-5 rounded-2xl bg-white border border-gray-200 shadow-xs">
+              <p class="text-xs font-semibold text-gray-500">Khatam Tasmi' 30 Juz</p>
+              <p class="text-2xl sm:text-3xl font-extrabold mt-1">19 <span class="text-xs font-bold text-amber-600">Huffazh</span></p>
+              <p class="text-[11px] text-gray-400 mt-1">Tersertifikasi periode berjalan</p>
+            </div>
+          </div>
+
+          <!-- Podium Apresiasi 11 Indikator Tie-Ranking (Sorotan Utama Rapat) -->
+          <div class="rapat-card rounded-3xl bg-white border border-gray-200 p-6 shadow-xs">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 border-b border-gray-100">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-[#B58A3D]">Apresiasi Rapat Pengurus</span>
+                <h2 class="text-lg sm:text-xl font-extrabold mt-0.5">Podium Santri Teladan (Algoritma 11 Indikator Tie-Ranking)</h2>
+              </div>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200">Klik nama santri untuk Profil Individu</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-5">
+              <!-- Juara 1 -->
+              <div onclick="openSantriProfile('Maulana Aufii Fillah')" class="cursor-pointer p-5 rounded-2xl bg-gradient-to-br from-amber-50 to-white border-2 border-[#B58A3D] relative hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="px-2.5 py-0.5 rounded-full bg-[#B58A3D] text-white text-xs font-extrabold">PERINGKAT #1</span>
+                  <span class="text-xs font-bold text-amber-900">Skor: 98.6</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-gray-900 mt-3">Maulana Aufii Fillah</h3>
+                <p class="text-xs text-gray-600">Halaqoh Al-Mulk • Bilghoib (28 Juz)</p>
+                <div class="mt-4 pt-3 border-t border-amber-200/60 flex justify-between text-xs font-semibold text-gray-700">
+                  <span>Keaktifan: 100%</span>
+                  <span>Ziyadah: +42 Hal</span>
+                </div>
+              </div>
+
+              <!-- Juara 2 -->
+              <div onclick="openSantriProfile('Moh. Ghilman Al Farikhi')" class="cursor-pointer p-5 rounded-2xl bg-gray-50/80 border border-gray-200 hover:border-emerald-500 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="px-2.5 py-0.5 rounded-full bg-emerald-700 text-white text-xs font-extrabold">PERINGKAT #2</span>
+                  <span class="text-xs font-bold text-gray-700">Skor: 96.4</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-gray-900 mt-3">Moh. Ghilman Al Farikhi</h3>
+                <p class="text-xs text-gray-600">Halaqoh Al-Waqi'ah • Bilghoib (24 Juz)</p>
+                <div class="mt-4 pt-3 border-t border-gray-200 flex justify-between text-xs font-semibold text-gray-700">
+                  <span>Keaktifan: 98.5%</span>
+                  <span>Ziyadah: +38 Hal</span>
+                </div>
+              </div>
+
+              <!-- Juara 3 -->
+              <div onclick="openSantriProfile('Deva Febriyansyah')" class="cursor-pointer p-5 rounded-2xl bg-gray-50/80 border border-gray-200 hover:border-emerald-500 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between">
+                  <span class="px-2.5 py-0.5 rounded-full bg-gray-800 text-white text-xs font-extrabold">PERINGKAT #3</span>
+                  <span class="text-xs font-bold text-gray-700">Skor: 95.1</span>
+                </div>
+                <h3 class="text-lg font-extrabold text-gray-900 mt-3">Deva Febriyansyah</h3>
+                <p class="text-xs text-gray-600">Halaqoh Ar-Rahman • Binnadzhor Khatam</p>
+                <div class="mt-4 pt-3 border-t border-gray-200 flex justify-between text-xs font-semibold text-gray-700">
+                  <span>Keaktifan: 97.8%</span>
+                  <span>Murojaah: 15 Juz</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grafik Evaluasi Rapat -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="rapat-card p-6 rounded-2xl bg-white border border-gray-200">
+              <h3 class="text-base font-bold mb-4">Grafik Perkembangan Ziyadah & Murojaah Bulanan</h3>
+              <canvas id="chartHafalan" height="200"></canvas>
+            </div>
+            <div class="rapat-card p-6 rounded-2xl bg-white border border-gray-200">
+              <h3 class="text-base font-bold mb-4">Persentase Kehadiran Per Sesi (Maghrib, Isya', Pagi)</h3>
+              <canvas id="chartPresensi" height="200"></canvas>
+            </div>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- TAB 2: DATA SANTRI (PROFIL INDIVIDU & 7 TAB ADMINISTRASI)       -->
+        <!-- =============================================================== -->
+        <section id="tab-santri" class="workspace-tab hidden space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-extrabold">Manajemen Data Santri</h2>
+              <p class="text-xs text-gray-500">Klik baris santri untuk <strong>Profil Pencapaian Individu</strong>, atau klik <strong>7 Tab</strong> untuk administrasi lengkap.</p>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <button onclick="toggleSantriLayout('table')" class="px-3 py-2 rounded-lg border border-gray-300 bg-white text-xs font-bold">Baris</button>
+              <button onclick="toggleSantriLayout('grid')" class="px-3 py-2 rounded-lg border border-gray-300 bg-white text-xs font-bold">Grid</button>
+              <button id="btnTambahSantri" onclick="alert('Form Tambah Santri Baru (7 Tab: Identitas, Akademik, Wali, Asrama, Riwayat, Kesehatan, Tasmi\') dibuka.')" class="px-4 py-2 rounded-lg bg-[#0F5132] text-white text-xs font-bold">
+                + Tambah Santri / Import CSV
+              </button>
+            </div>
+          </div>
+
+          <!-- Filter & Search -->
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input type="text" id="searchSantriInput" onkeyup="renderSantriList()" placeholder="Cari nama santri, Nomor Induk, atau halaqoh..." class="flex-1 px-4 py-2.5 rounded-xl border border-gray-300 text-sm bg-white">
+            <select id="perPageSelect" class="px-3 py-2.5 rounded-xl border border-gray-300 text-xs font-bold bg-white">
+              <option>Tampil: 10</option>
+              <option>Tampil: 25</option>
+              <option>Tampil: 50</option>
+              <option>Tampil: 100</option>
+              <option>Tampil: 500</option>
+            </select>
+          </div>
+
+          <div id="santriContainer" class="bg-white rounded-2xl border border-gray-200 overflow-hidden"></div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- TAB 3: PRESENSI 3 SESI HARIAN                                   -->
+        <!-- =============================================================== -->
+        <section id="tab-presensi" class="workspace-tab hidden space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-extrabold">Presensi Multi-Sesi & Kalender Efektif</h2>
+              <p class="text-xs text-gray-500">Pemisahan kalender efektif per sesi (Maghrib, Isya', Muroqobah Pagi) dengan rekap otomatis pekanan 1–4 ke bulanan.</p>
+            </div>
+            <div class="flex gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-emerald-100 text-emerald-900 text-xs font-bold">Sesi 1: Maghrib</span>
+              <span class="px-3 py-1.5 rounded-lg bg-amber-100 text-amber-900 text-xs font-bold">Sesi 2: Isya'</span>
+              <span class="px-3 py-1.5 rounded-lg bg-blue-100 text-blue-900 text-xs font-bold">Sesi 3: Muroqobah Pagi</span>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-gray-200 p-5 overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b border-gray-200 text-xs uppercase text-gray-500">
+                  <th class="py-3 px-3">Nama Santri</th>
+                  <th class="py-3 px-3">Halaqoh</th>
+                  <th class="py-3 px-3">Maghrib</th>
+                  <th class="py-3 px-3">Isya'</th>
+                  <th class="py-3 px-3">Muroqobah Pagi</th>
+                  <th class="py-3 px-3">Rekap Bulanan</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100" id="presensiTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- TAB 4: HAFALAN BILGHOIB & BINNADZHOR                            -->
+        <!-- =============================================================== -->
+        <section id="tab-hafalan" class="workspace-tab hidden space-y-5">
+          <div>
+            <h2 class="text-2xl font-extrabold">Rekap Hafalan Bilghoib & Sorogan Binnadzhor</h2>
+            <p class="text-xs text-gray-500">Pemisahan Log Setoran Harian dari Rekap Bulanan Resmi serta konversi otomatis sisa halaman ke Juz.</p>
+          </div>
+          <div class="bg-white rounded-2xl border border-gray-200 p-5 overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b border-gray-200 text-xs uppercase text-gray-500">
+                  <th class="py-3 px-3">Santri</th>
+                  <th class="py-3 px-3">Program</th>
+                  <th class="py-3 px-3">Ziyadah Bulan Ini</th>
+                  <th class="py-3 px-3">Murojaah</th>
+                  <th class="py-3 px-3">Total Capaian</th>
+                  <th class="py-3 px-3">Status Target</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100" id="hafalanTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- TAB 5: PENGAMPU UTAMA & BADAL (BISYAROH HIDDEN UNTUK EDITOR/VIEWER) -->
+        <!-- =============================================================== -->
+        <section id="tab-pengampu" class="workspace-tab hidden space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-extrabold">Manajemen Pengampu Utama & Pengampu Badal</h2>
+              <p class="text-xs text-gray-500">Pemisahan pengampu tetap dan pengampu badal khusus beserta pencatatan badal harian per sesi.</p>
+            </div>
+            <!-- Indikator Privasi Bisyaroh -->
+            <div id="bisyarohNoticeBanner" class="px-3.5 py-2 rounded-xl bg-gray-100 border border-gray-200 text-xs font-semibold text-gray-600">
+              🔒 Rincian nominal Bisyaroh disembunyikan untuk peran Editor & Viewer.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-gray-200 p-5 overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+              <thead>
+                <tr class="border-b border-gray-200 text-xs uppercase text-gray-500">
+                  <th class="py-3 px-3">Nama Pengampu</th>
+                  <th class="py-3 px-3">Status Peran</th>
+                  <th class="py-3 px-3">Halaqoh Ampuan</th>
+                  <th class="py-3 px-3">Sesi Hadir</th>
+                  <th class="py-3 px-3">Sesi Badal</th>
+                  <th class="py-3 px-3 bisyaroh-col">Bisyaroh Pokok & Sesi</th>
+                  <th class="py-3 px-3 bisyaroh-col">Total Bisyaroh</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-100" id="pengampuTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- TAB 6: SMART ANALYTICS                                          -->
+        <!-- =============================================================== -->
+        <section id="tab-analytics" class="workspace-tab hidden space-y-5">
+          <div>
+            <h2 class="text-2xl font-extrabold">Smart Analytics & Rekomendasi Pembinaan</h2>
+            <p class="text-xs text-gray-500">Perbandingan otomatis periode aktif terhadap periode sebelumnya pada jalur pendidikan yang sama.</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="p-6 rounded-2xl bg-white border border-amber-200">
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold">Deteksi Penurunan Keaktifan ≥ 10%</span>
+              <h3 class="text-base font-bold mt-3">1 Santri Memerlukan Pendampingan Wali Halaqoh</h3>
+              <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">Sistem mendeteksi penurunan kehadiran sesi Muroqobah Pagi sebesar 12% dibanding bulan sebelumnya. Rekomendasi: Konseling individu oleh pengampu utama.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-white border border-emerald-200">
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold">Performa Halaqoh &gt; 70% Target</span>
+              <h3 class="text-base font-bold mt-3">Seluruh 6 Halaqoh Melampaui Ambang Target</h3>
+              <p class="text-xs text-gray-600 mt-1.5 leading-relaxed">Halaqoh Al-Mulk mencatat capaian tertinggi (96.4% target Ziyadah bulanan) dan layak mendapatkan apresiasi pada rapat pleno pengurus.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- =============================================================== -->
+        <!-- TAB 7: AUDIT TRAIL, SNAPSHOT & PEMERIKSAAN INTEGRITAS DATA      -->
+        <!-- =============================================================== -->
+        <section id="tab-integritas" class="workspace-tab hidden space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-extrabold">Pemeriksaan Integritas Data, Audit Trail & Snapshot</h2>
+              <p class="text-xs text-gray-500">Validasi otomatis Nomor Induk, sisa halaman belum dikonversi, dan titik pemulihan periode.</p>
+            </div>
+            <button id="btnSnapshot" onclick="alert('Snapshot Periode Rajab 1447 H berhasil disimpan sebagai titik pemulihan (Restore Point).')" class="px-4 py-2 rounded-xl bg-[#0F5132] text-white text-xs font-bold">
+              📸 Buat Snapshot Periode
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs">
+              <p class="font-bold text-emerald-900">✓ Duplikasi Nomor Induk: 0</p>
+              <p class="text-emerald-700 mt-1">Seluruh 148 Nomor Induk santri unik.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs">
+              <p class="font-bold text-emerald-900">✓ Konversi Halaman ke Juz: Valid</p>
+              <p class="text-emerald-700 mt-1">Tidak ada sisa halaman menggantung.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-xs">
+              <p class="font-bold text-emerald-900">✓ Konsistensi Pengampu & Badal: Valid</p>
+              <p class="text-emerald-700 mt-1">Seluruh sesi izin terisi pengampu badal.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl border border-gray-200 p-5">
+            <h3 class="text-sm font-bold mb-3">Log Audit Trail Aktivitas Terbaru</h3>
+            <div class="space-y-2.5 text-xs">
+              <div class="p-3 rounded-xl bg-gray-50 flex items-center justify-between">
+                <span><strong>Editor (Bpk. Muhammad Kholil M.)</strong> memperbarui rekap Ziyadah Halaqoh Al-Mulk.</span>
+                <button class="restore-btn px-2.5 py-1 rounded bg-amber-100 text-amber-900 font-bold" onclick="alert('Data berhasil dipulihkan ke versi sebelum perubahan.')">Pulihkan</button>
+              </div>
+              <div class="p-3 rounded-xl bg-gray-50 flex items-center justify-between">
+                <span><strong>Admin (Bpk. Saiful Bahri Kamaludin)</strong> menunjuk pengampu badal sesi Isya'.</span>
+                <button class="restore-btn px-2.5 py-1 rounded bg-amber-100 text-amber-900 font-bold" onclick="alert('Data berhasil dipulihkan ke versi sebelum perubahan.')">Pulihkan</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+
+    <!-- Mobile Bottom Navigation Bar (Sesuai Pedoman V5.4) -->
+    <nav class="lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white border-t border-gray-200 grid grid-cols-5 h-16 text-[11px] font-bold">
+      <button onclick="switchTab('dashboard')" class="flex flex-col items-center justify-center text-[#0F5132]">
+        <span class="text-base">📊</span>
+        <span>Dashboard</span>
+      </button>
+      <button onclick="switchTab('santri')" class="flex flex-col items-center justify-center text-gray-600">
+        <span class="text-base">🎓</span>
+        <span>Santri</span>
+      </button>
+      <button onclick="switchTab('presensi')" class="flex flex-col items-center justify-center text-gray-600">
+        <span class="text-base">🗓️</span>
+        <span>Presensi</span>
+      </button>
+      <button onclick="switchTab('hafalan')" class="flex flex-col items-center justify-center text-gray-600">
+        <span class="text-base">📖</span>
+        <span>Hafalan</span>
+      </button>
+      <button onclick="switchTab('pengampu')" class="flex flex-col items-center justify-center text-gray-600">
+        <span class="text-base">☰</span>
+        <span>More</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL PROFIL PENCAPAIAN INDIVIDU SANTRI & 7 TAB ADMINISTRASI          -->
+  <!-- ===================================================================== -->
+  <div id="santriDetailModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-gray-950/60 backdrop-blur-xs p-4">
+    <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-gray-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-start justify-between pb-4 border-b border-gray-100">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-700" id="modalModeLabel">Dashboard Pencapaian Individu Santri</span>
+          <h3 class="text-xl font-extrabold text-gray-900 mt-0.5" id="modalSantriName">Maulana Aufii Fillah</h3>
+        </div>
+        <button onclick="closeSantriModal()" class="w-8 h-8 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center text-gray-600">✕</button>
+      </div>
+
+      <!-- Mode Switcher: Profil Individu vs 7 Tab Administrasi -->
+      <div class="flex gap-2 mt-4">
+        <button onclick="switchModalView('individu')" id="btnModalIndividu" class="px-4 py-2 rounded-xl text-xs font-bold bg-[#0F5132] text-white">Profil Pencapaian Individu</button>
+        <button onclick="switchModalView('7tab')" id="btnModal7Tab" class="px-4 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-700">Administrasi 7 Tab</button>
+      </div>
+
+      <!-- Konten Profil Pencapaian Individu -->
+      <div id="modalViewIndividu" class="mt-5 space-y-4">
+        <div class="grid grid-cols-3 gap-3">
+          <div class="p-3.5 rounded-xl bg-emerald-50 border border-emerald-100">
+            <p class="text-[11px] font-semibold text-emerald-800">Keaktifan Kumulatif</p>
+            <p class="text-lg font-extrabold text-emerald-950 mt-0.5">100%</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-amber-50 border border-amber-100">
+            <p class="text-[11px] font-semibold text-amber-800">Total Hafalan</p>
+            <p class="text-lg font-extrabold text-amber-950 mt-0.5">28 Juz</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-gray-50 border border-gray-200">
+            <p class="text-[11px] font-semibold text-gray-600">Status Tasmi'</p>
+            <p class="text-lg font-extrabold text-gray-900 mt-0.5">Lulus 25 Juz</p>
+          </div>
+        </div>
+        <div class="p-4 rounded-2xl border border-gray-200 bg-gray-50 text-xs space-y-1.5">
+          <p class="font-bold text-gray-800">Riwayat Evaluasi Bulanan (Rajab 1447 H):</p>
+          <p class="text-gray-600">• Kelancaran Bilghoib: Mumtaz (98) | Tajwid & Fashohah: Sangat Baik (97)</p>
+          <p class="text-gray-600">• Catatan Pengampu: Konsisten menyetorkan Ziyadah pada sesi Muroqobah Pagi.</p>
+        </div>
+      </div>
+
+      <!-- Konten Administrasi 7 Tab -->
+      <div id="modalView7Tab" class="hidden mt-5">
+        <div class="flex flex-wrap gap-1.5 pb-3 border-b border-gray-100 text-xs font-bold">
+          <span class="px-3 py-1.5 rounded-lg bg-emerald-100 text-emerald-900">1. Identitas</span>
+          <span class="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600">2. Akademik</span>
+          <span class="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600">3. Wali</span>
+          <span class="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600">4. Asrama</span>
+          <span class="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600">5. Riwayat</span>
+          <span class="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600">6. Kesehatan</span>
+          <span class="px-3 py-1.5 rounded-lg bg-gray-100 text-gray-600">7. Tasmi'</span>
+        </div>
+        <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+          <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+            <span class="text-gray-400 block">Nomor Induk Santri</span>
+            <span class="font-bold text-gray-800">JQH-2026-001</span>
+          </div>
+          <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+            <span class="text-gray-400 block">Halaqoh & Jalur</span>
+            <span class="font-bold text-gray-800">Halaqoh Al-Mulk (Salaf 10 Bln)</span>
+          </div>
+          <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+            <span class="text-gray-400 block">Komplek Asrama</span>
+            <span class="font-bold text-gray-800">Asrama Darussalam — Kamar 04</span>
+          </div>
+          <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+            <span class="text-gray-400 block">Status Kesehatan & Tasmi'</span>
+            <span class="font-bold text-emerald-700">Sehat • Siap Tasmi' Juz 26–30</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT LOGIC: ANIMASI, ROLE ACCESS CONTROL, & DATA INTERAKTIF     -->
+  <!-- ===================================================================== -->
+  <script>
+    // 1. Scroll Reveal Animation Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // 2. Data Internal SIM-JQH (Hanya dapat diakses setelah login)
+    const santriData = [
+      { id: 'JQH-001', nama: 'Maulana Aufii Fillah', halaqoh: 'Al-Mulk', program: 'Bilghoib', capaian: '28 Juz', ziyadah: '+42 Hal', murojaah: '12 Juz', aktif: '100%' },
+      { id: 'JQH-002', nama: 'Moh. Ghilman Al Farikhi', halaqoh: 'Al-Waqi\'ah', program: 'Bilghoib', capaian: '24 Juz', ziyadah: '+38 Hal', murojaah: '10 Juz', aktif: '98.5%' },
+      { id: 'JQH-003', nama: 'Deva Febriyansyah', halaqoh: 'Ar-Rahman', program: 'Binnadzhor', capaian: '30 Juz (Khatam)', ziyadah: '+35 Hal', murojaah: '15 Juz', aktif: '97.8%' },
+      { id: 'JQH-004', nama: 'Ahmad Fauzan Hakim', halaqoh: 'Yasin', program: 'Bilghoib', capaian: '16 Juz', ziyadah: '+29 Hal', murojaah: '8 Juz', aktif: '94.0%' }
+    ];
+
+    const pengampuData = [
+      { nama: 'Bpk. Muhammad Kholil M.', peran: 'Pengampu Utama', halaqoh: 'Al-Mulk', sesiHadir: 68, sesiBadal: 0, bisyarohPokok: 'Rp 1.250.000', totalBisyaroh: 'Rp 1.250.000' },
+      { nama: 'Bpk. Saiful Bahri Kamaludin', peran: 'Pengampu Utama', halaqoh: 'Al-Waqi\'ah', sesiHadir: 64, sesiBadal: 0, bisyarohPokok: 'Rp 1.180.000', totalBisyaroh: 'Rp 1.180.000' },
+      { nama: 'Ust. Ahmad Rifqi Ghufron', peran: 'Pengampu Badal Khusus', halaqoh: 'Lintas Halaqoh', sesiHadir: 0, sesiBadal: 14, bisyarohPokok: 'Rp 350.000 (14 Sesi Badal)', totalBisyaroh: 'Rp 350.000' }
+    ];
+
+    let currentRole = 'Admin Premium';
+    let santriLayout = 'table';
+    let isRapatMode = false;
+
+    // 3. Modal & Login Functions
+    function openLoginModal() {
+      document.getElementById('loginModal').classList.remove('hidden');
+      document.getElementById('loginModal').classList.add('flex');
+    }
+    function closeLoginModal() {
+      document.getElementById('loginModal').classList.add('hidden');
+      document.getElementById('loginModal').classList.remove('flex');
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      currentRole = document.getElementById('loginRoleSelect').value;
+      const username = document.getElementById('loginUsername').value || 'Pengurus JQH';
+
+      closeLoginModal();
+      document.getElementById('publicLandingView').classList.add('hidden');
+      document.getElementById('appWorkspaceView').classList.remove('hidden');
+      document.getElementById('appWorkspaceView').classList.add('flex');
+
+      // Update identitas & terapkan pembatasan hak akses (Role-Based Access Control)
+      document.getElementById('activeRoleBadge').textContent = currentRole;
+      document.getElementById('sidebarUserName').textContent = username;
+      applyRolePermissions(currentRole);
+
+      renderSantriList();
+      renderPresensiAndHafalan();
+      renderPengampuTable();
+      initCharts();
+    }
+
+    function logoutSystem() {
+      if (isRapatMode) toggleRapatMode();
+      document.getElementById('appWorkspaceView').classList.add('hidden');
+      document.getElementById('appWorkspaceView').classList.remove('flex');
+      document.getElementById('publicLandingView').classList.remove('hidden');
+    }
+
+    // 4. Pembatasan Hak Akses Ketat (Viewer & Editor DILARANG melihat Bisyaroh)
+    function applyRolePermissions(role) {
+      const canSeeBisyaroh = (role === 'Admin Premium' || role === 'Admin');
+      const canEditData = (role === 'Admin Premium' || role === 'Admin' || role === 'Editor');
+      const isAdminPremium = (role === 'Admin Premium');
+
+      // Sembunyikan/tampilkan informasi Bisyaroh
+      document.getElementById('bisyarohNoticeBanner').style.display = canSeeBisyaroh ? 'none' : 'block';
+      document.querySelectorAll('.bisyaroh-col').forEach(el => {
+        el.style.display = canSeeBisyaroh ? '' : 'none';
+      });
+
+      // Tombol tambah data hanya untuk Editor, Admin, Admin Premium
+      document.getElementById('btnTambahSantri').style.display = canEditData ? 'inline-flex' : 'none';
+
+      // Snapshot & Restore hanya Admin / Admin Premium
+      document.getElementById('btnSnapshot').style.display = canSeeBisyaroh ? 'inline-flex' : 'none';
+      document.querySelectorAll('.restore-btn').forEach(btn => {
+        btn.style.display = isAdminPremium ? 'inline-block' : 'none';
+      });
+
+      const roleDescriptions = {
+        'Admin Premium': 'Otoritas tertinggi, Bisyaroh, & Restore',
+        'Admin': 'Operasional penuh, Bisyaroh, & Snapshot',
+        'Editor': 'Input & edit data (Tanpa akses Bisyaroh)',
+        'Viewer': 'Mode Rapat & Pantau (Read-Only)'
+      };
+      document.getElementById('sidebarRoleDesc').textContent = roleDescriptions[role];
+    }
+
+    // 5. Render Data Santri, Presensi, Hafalan, Pengampu
+    function renderSantriList() {
+      const query = (document.getElementById('searchSantriInput').value || '').toLowerCase();
+      const filtered = santriData.filter(s => s.nama.toLowerCase().includes(query) || s.id.toLowerCase().includes(query) || s.halaqoh.toLowerCase().includes(query));
+      const container = document.getElementById('santriContainer');
+
+      if (santriLayout === 'grid') {
+        container.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4';
+        container.innerHTML = filtered.map(s => `
+          <div class="p-5 rounded-2xl bg-white border border-gray-200 hover:border-emerald-600 transition-all">
+            <div class="flex justify-between items-start">
+              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded bg-gray-100 text-gray-700">${s.id}</span>
+              <span class="text-xs font-bold text-emerald-700">${s.aktif} Aktif</span>
+            </div>
+            <h4 onclick="openSantriProfile('${s.nama}')" class="cursor-pointer text-base font-extrabold text-gray-900 mt-3 hover:text-emerald-700">${s.nama}</h4>
+            <p class="text-xs text-gray-500 mt-0.5">Halaqoh ${s.halaqoh} • ${s.program}</p>
+            <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-800">${s.capaian}</span>
+              <button onclick="openSantri7Tab('${s.nama}')" class="px-3 py-1 rounded-lg bg-emerald-50 text-[#0F5132] text-xs font-bold hover:bg-emerald-100">7 Tab</button>
+            </div>
+          </div>
+        `).join('');
+      } else {
+        container.className = 'bg-white rounded-2xl border border-gray-200 overflow-x-auto';
+        container.innerHTML = `
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="border-b border-gray-200 text-xs uppercase text-gray-500 bg-gray-50/60">
+                <th class="py-3.5 px-4">No. Induk</th>
+                <th class="py-3.5 px-4">Nama Santri (Klik Profil)</th>
+                <th class="py-3.5 px-4">Halaqoh</th>
+                <th class="py-3.5 px-4">Capaian Hafalan</th>
+                <th class="py-3.5 px-4">Keaktifan</th>
+                <th class="py-3.5 px-4 text-right">Administrasi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              ${filtered.map(s => `
+                <tr class="hover:bg-gray-50/80 transition-colors">
+                  <td class="py-3.5 px-4 text-xs font-bold text-gray-500">${s.id}</td>
+                  <td class="py-3.5 px-4 font-bold text-gray-900 cursor-pointer hover:text-[#0F5132]" onclick="openSantriProfile('${s.nama}')">${s.nama}</td>
+                  <td class="py-3.5 px-4 text-xs font-semibold text-gray-600">${s.halaqoh} (${s.program})</td>
+                  <td class="py-3.5 px-4 text-xs font-bold text-amber-800">${s.capaian}</td>
+                  <td class="py-3.5 px-4 text-xs font-bold text-emerald-700">${s.aktif}</td>
+                  <td class="py-3.5 px-4 text-right">
+                    <button onclick="openSantri7Tab('${s.nama}')" class="px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 text-[#0F5132] text-xs font-bold">7 Tab</button>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+    }
+
+    function toggleSantriLayout(mode) {
+      santriLayout = mode;
+      renderSantriList();
+    }
+
+    function renderPresensiAndHafalan() {
+      document.getElementById('presensiTableBody').innerHTML = santriData.map(s => `
+        <tr>
+          <td class="py-3 px-3 font-bold">${s.nama}</td>
+          <td class="py-3 px-3 text-xs text-gray-600">${s.halaqoh}</td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">Hadir</span></td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">Hadir</span></td>
+          <td class="py-3 px-3"><span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-800 text-xs font-bold">Hadir</span></td>
+          <td class="py-3 px-3 text-xs font-extrabold text-emerald-700">${s.aktif}</td>
+        </tr>
+      `).join('');
+
+      document.getElementById('hafalanTableBody').innerHTML = santriData.map(s => `
+        <tr>
+          <td class="py-3 px-3 font-bold">${s.nama}</td>
+          <td class="py-3 px-3 text-xs">${s.program}</td>
+          <td class="py-3 px-3 text-xs font-bold text-emerald-700">${s.ziyadah}</td>
+          <td class="py-3 px-3 text-xs font-semibold">${s.murojaah}</td>
+          <td class="py-3 px-3 text-xs font-extrabold text-amber-800">${s.capaian}</td>
+          <td class="py-3 px-3"><span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-emerald-900 text-xs font-bold">Tercapai</span></td>
+        </tr>
+      `).join('');
+    }
+
+    function renderPengampuTable() {
+      const canSeeBisyaroh = (currentRole === 'Admin Premium' || currentRole === 'Admin');
+      document.getElementById('pengampuTableBody').innerHTML = pengampuData.map(p => `
+        <tr>
+          <td class="py-3.5 px-3 font-bold text-gray-900">${p.nama}</td>
+          <td class="py-3.5 px-3"><span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${p.peran.includes('Badal') ? 'bg-amber-100 text-amber-900' : 'bg-emerald-100 text-emerald-900'}">${p.peran}</span></td>
+          <td class="py-3.5 px-3 text-xs text-gray-600">${p.halaqoh}</td>
+          <td class="py-3.5 px-3 text-xs font-bold">${p.sesiHadir} Sesi</td>
+          <td class="py-3.5 px-3 text-xs font-bold text-amber-800">${p.sesiBadal} Sesi</td>
+          ${canSeeBisyaroh ? `
+            <td class="py-3.5 px-3 text-xs font-semibold text-gray-700 bisyaroh-col">${p.bisyarohPokok}</td>
+            <td class="py-3.5 px-3 text-xs font-extrabold text-emerald-800 bisyaroh-col">${p.totalBisyaroh}</td>
+          ` : ''}
+        </tr>
+      `).join('');
+    }
+
+    // 6. Tab Navigation & Modal Profil Santri
+    function switchTab(tabId) {
+      document.querySelectorAll('.workspace-tab').forEach(el => el.classList.add('hidden'));
+      document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-emerald-50', 'text-[#0F5132]', 'font-bold');
+        btn.classList.add('text-gray-600', 'font-semibold');
+      });
+      const activeBtn = document.querySelector(`.nav-btn[data-tab="${tabId}"]`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-emerald-50', 'text-[#0F5132]', 'font-bold');
+        activeBtn.classList.remove('text-gray-600', 'font-semibold');
+      }
+    }
+
+    function openSantriProfile(name) {
+      document.getElementById('modalSantriName').textContent = name;
+      switchModalView('individu');
+      document.getElementById('santriDetailModal').classList.remove('hidden');
+      document.getElementById('santriDetailModal').classList.add('flex');
+    }
+    function openSantri7Tab(name) {
+      document.getElementById('modalSantriName').textContent = name;
+      switchModalView('7tab');
+      document.getElementById('santriDetailModal').classList.remove('hidden');
+      document.getElementById('santriDetailModal').classList.add('flex');
+    }
+    function closeSantriModal() {
+      document.getElementById('santriDetailModal').classList.add('hidden');
+      document.getElementById('santriDetailModal').classList.remove('flex');
+    }
+    function switchModalView(view) {
+      if (view === 'individu') {
+        document.getElementById('modalViewIndividu').classList.remove('hidden');
+        document.getElementById('modalView7Tab').classList.add('hidden');
+        document.getElementById('btnModalIndividu').className = 'px-4 py-2 rounded-xl text-xs font-bold bg-[#0F5132] text-white';
+        document.getElementById('btnModal7Tab').className = 'px-4 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-700';
+      } else {
+        document.getElementById('modalViewIndividu').classList.add('hidden');
+        document.getElementById('modalView7Tab').classList.remove('hidden');
+        document.getElementById('btnModal7Tab').className = 'px-4 py-2 rounded-xl text-xs font-bold bg-[#0F5132] text-white';
+        document.getElementById('btnModalIndividu').className = 'px-4 py-2 rounded-xl text-xs font-bold bg-gray-100 text-gray-700';
+      }
+    }
+
+    // 7. Mode Rapat Evaluasi & Kalender Salaf/Formal
+    function toggleRapatMode() {
+      isRapatMode = !isRapatMode;
+      const workspace = document.getElementById('appWorkspaceView');
+      const btn = document.getElementById('btnRapatMode');
+      if (isRapatMode) {
+        switchTab('dashboard');
+        workspace.classList.add('rapat-mode');
+        btn.innerHTML = '<span>✕</span> <span class="hidden sm:inline">Keluar Rapat</span>';
+      } else {
+        workspace.classList.remove('rapat-mode');
+        btn.innerHTML = '<span>🏆</span> <span class="hidden sm:inline">Mode Rapat</span>';
+      }
+    }
+
+    function updateAcademicPeriod() {
+      const jalur = document.getElementById('jalurSelector').value;
+      const banner = document.getElementById('periodBannerText');
+      if (jalur === 'salaf') {
+        banner.textContent = 'Periode Aktif: Jalur Salaf — Tahunan (Syawal – Rajab, 10 Bulan)';
+      } else {
+        banner.textContent = 'Periode Aktif: Jalur Formal — Tahun Akademik Dinamis (Konfigurasi Admin Premium)';
+      }
+    }
+
+    function toggleNotifPanel() {
+      document.getElementById('notifPanel').classList.toggle('hidden');
+    }
+
+    // 8. Chart.js Evaluasi Rapat
+    let chartsInitialized = false;
+    function initCharts() {
+      if (chartsInitialized) return;
+      chartsInitialized = true;
+
+      new Chart(document.getElementById('chartHafalan'), {
+        type: 'line',
+        data: {
+          labels: ['Syawal', 'Dzulqa\'dah', 'Dzulhijjah', 'Muharram', 'Safar', 'Rabiul Awal', 'Rajab'],
+          datasets: [{
+            label: 'Rata-rata Ziyadah (Halaman)',
+            data: [18, 22, 25, 29, 31, 35, 39],
+            borderColor: '#0F5132',
+            backgroundColor: 'rgba(15, 81, 50, 0.1)',
+            fill: true,
+            tension: 0.35
+          }]
+        },
+        options: { responsive: true, plugins: { legend: { display: false } } }
+      });
+
+      new Chart(document.getElementById('chartPresensi'), {
+        type: 'bar',
+        data: {
+          labels: ['Sesi Maghrib', 'Sesi Isya\'', 'Muroqobah Pagi'],
+          datasets: [{
+            label: 'Persentase Kehadiran (%)',
+            data: [96.4, 94.8, 91.5],
+            backgroundColor: ['#0F5132', '#198754', '#B58A3D'],
+            borderRadius: 8
+          }]
+        },
+        options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { min: 70, max: 100 } } }
+      });
+    }
+  </script>
+</body>
+</html>
